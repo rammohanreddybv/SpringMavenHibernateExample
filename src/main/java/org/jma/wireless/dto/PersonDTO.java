@@ -33,13 +33,13 @@ public class PersonDTO {
 
 	public static PersonDTO getPersonDTO(Person person) {
 		PersonDTO dto = new PersonDTO();
-		dto.setId(person.getPersonId());
+		dto.setId(person.getId());
 		dto.setEmail(person.getEmail());
 		dto.setName(person.getName());
 		Set<Team> teams=person.getTeamList();
 		List<Integer> ids=new ArrayList<>();
 		for(Team t:teams) {
-			int id=t.getTeamId();
+			int id=t.getId();
 			ids.add(id);
 		}
 		dto.setTeamIds(ids);

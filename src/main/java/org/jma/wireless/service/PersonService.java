@@ -22,7 +22,7 @@ public interface PersonService {
 
 	PersonDTO getPerson(int id);
 
-	PersonDTO updatePerson(Person person);
+	PersonDTO updatePerson(PersonDTO personDTO);
 
 	void deletePerson(int id);
 

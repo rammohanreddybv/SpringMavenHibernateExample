@@ -58,14 +58,16 @@ public class TeamServiceImpl implements TeamService {
 
 	@Override
 	@Transactional
-	public Team updateTeam(Team team) {
-		int id = team.getTeamId();
+	public TeamDTO updateTeam(TeamDTO teamDTO) {
+		int id = teamDTO.getId();
 		Team t1 = dao.findById(id) == null ? null : dao.findById(id);
 		if (t1 != null) {
-			t1.setName(team.getName());
-			t1.setPurpose(team.getPurpose());
+			if(teamDTO.getName()!=null)
+			t1.setName(teamDTO.getName());
+			if(teamDTO.getPurpose()!=null)
+			t1.setPurpose(teamDTO.getPurpose());
 			dao.updateTeam(t1);
-			return t1;
+			return TeamDTO.getTeamDTO(t1);
 		}
 		return null;
 	}

@@ -18,11 +18,9 @@ public interface TaskService {
 
 	Task create(TaskDTO taskDTO);
 
-	//List<TaskDTO> getAllTasks();
-
 	TaskDTO getTask(int id);
 
-	Task updateTask(Task task);
+	Task updateTask(TaskDTO taskDTO);
 
 	void deleteTask(int id);
 

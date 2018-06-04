@@ -22,29 +22,21 @@ public class Task {
 	private int id;
 
 	private String name;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Team team;
-	
 
 	public Task() {
 		super();
 	}
-
-	
 
 	public Task(int id, String name, Team team) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.team = team;
-		
+
 	}
-
-
-
-	
-
 
 	public int getId() {
 		return id;
@@ -62,7 +54,6 @@ public class Task {
 		this.name = name;
 	}
 
-	
 	public Team getTeam() {
 		return team;
 	}
@@ -70,8 +61,5 @@ public class Task {
 	public void setTeam(Team team) {
 		this.team = team;
 	}
-
-	
-	
 
 }

@@ -24,11 +24,13 @@ public interface TeamService {
 
 	TeamDTO getTeam(int id);
 
-	Team updateTeam(Team team);
+	
 
 	void deleteTeam(int id);
 	
 	List<TaskDTO> getTasksOfATeam(int id);
+
+	TeamDTO updateTeam(TeamDTO teamDTO);
 	
 	
 	

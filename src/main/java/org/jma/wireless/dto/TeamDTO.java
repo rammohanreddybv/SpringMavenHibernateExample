@@ -32,9 +32,10 @@ public class TeamDTO {
 
 	public static TeamDTO getTeamDTO(Team team) {
 		TeamDTO dto = new TeamDTO();
-		dto.setId(team.getTeamId());
+		dto.setId(team.getId());
 		dto.setName(team.getName());
 		dto.setPurpose(team.getPurpose());
+		
 		Set<Task> tasks=team.getTasks();
 		List<Integer> ids=new ArrayList<>();
 		for(Task t:tasks) {
@@ -47,7 +48,7 @@ public class TeamDTO {
 		Set<Person> persons=team.getPersonList();
 		List<Integer> pIds=new ArrayList<>();
 		for(Person p:persons) {
-			int id=p.getPersonId();
+			int id=p.getId();
 			pIds.add(id);
 		}
 		

@@ -49,31 +49,24 @@ public class TaskServiceImpl implements TaskService {
 		return null;
 	}
 
-	// @Override -- This needs to change because getAllTasks without a team doesn't
-	// make sense
-	// public List<TaskDTO> getAllTasks() {
-	// List<Task> tasks=dao.findAllTasks();
-	// List<TaskDTO> taskDTOs=new ArrayList<TaskDTO>();
-	// for(Task t:tasks) {
-	// taskDTOs.add(TaskDTO.getTaskDTO(t));
-	// }
-	// return taskDTOs;
-	// }
+
 
 	@Override
 	public TaskDTO getTask(int id) {
 		Task t = dao.findById(id) == null ? null : dao.findById(id);
-		System.out.println(t.getId() + " " + t.getName() + " " + t.getTeam().getTeamId());
+		System.out.println(t.getId() + " " + t.getName() + " " + t.getTeam().getId());
 		return TaskDTO.getTaskDTO(t);
 	}
 
 	@Override
-	@Transactional
-	public Task updateTask(Task task) {
-		int id = task.getId();
+	public Task updateTask(TaskDTO taskDTO) {
+		int id = taskDTO.getId();
 		Task p1 = dao.findById(id) == null ? null : dao.findById(id);
 		if (p1 != null) {
-			p1.setName(task.getName());
+			if(taskDTO.getName()!=null)
+			p1.setName(taskDTO.getName());
+			if(taskDTO.getTeamId()!=p1.getId())
+				p1.setName(taskDTO.getName());
 			dao.updateTask(p1);
 			return p1;
 		}

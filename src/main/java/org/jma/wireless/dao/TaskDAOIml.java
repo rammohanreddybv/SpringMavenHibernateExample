@@ -7,7 +7,6 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
-import org.jma.wireless.dto.TaskDTO;
 import org.jma.wireless.model.Task;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -40,11 +39,11 @@ public class TaskDAOIml extends AbstractDao<Integer, Task> implements TaskDAO {
 		Task p1 = (Task) c.uniqueResult();
 		return p1;
 	}
-	
+
 	@Override
 	public void updateTask(Task task) {
 		update(task);
-		
+
 	}
 
 	@Override
@@ -52,12 +51,11 @@ public class TaskDAOIml extends AbstractDao<Integer, Task> implements TaskDAO {
 		Criteria c = createEntityCriteria();
 		c.add(Restrictions.eq("id", id));
 		Task p1 = (Task) c.uniqueResult();
-		if(p1!=null) {
-		
+		if (p1 != null) {
+
 			delete(p1);
 		}
 
 	}
 
-	
 }

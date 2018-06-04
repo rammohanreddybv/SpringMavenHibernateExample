@@ -40,6 +40,7 @@ public class PersonDAOImpl extends AbstractDao<Integer, Person> implements Perso
 		c.add(Restrictions.eq("id", id));
 		Person p1 = (Person) c.uniqueResult();
 		System.out.println("Inside dao");
+		System.out.println("person is "+p1);
 		return p1;
 	}
 	

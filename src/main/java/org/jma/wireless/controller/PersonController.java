@@ -25,13 +25,13 @@ import org.springframework.web.bind.annotation.RestController;
  *
  */
 @RestController
-// @RequestMapping("/person")
+@RequestMapping("/person")
 public class PersonController {
 
 	@Autowired
 	PersonService personService;
 
-	@PostMapping(value = "/person", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody PersonDTO create(@RequestBody PersonDTO personDTO) {
 
 		Person p = personService.create(personDTO);
@@ -39,27 +39,27 @@ public class PersonController {
 		return personDTO.getPersonDTO(p);
 	}
 
-	@GetMapping("/person")
+	@GetMapping
 	public @ResponseBody List<PersonDTO> getAllPersons() {
 		return personService.getAllPersons();
 		
 		
 	}
 	
-	@GetMapping("/person/{id}")
+	@GetMapping("/{id}")
 	public @ResponseBody PersonDTO getPerson(@PathVariable("id") int id) {
 		
 		return personService.getPerson(id);
 	}
 	
-	@PutMapping(value = "/person", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody PersonDTO updatePerson(@RequestBody Person person) {
+	@PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody PersonDTO updatePerson(@RequestBody PersonDTO personDTO) {
 		
-		return personService.updatePerson(person);
+		return personService.updatePerson(personDTO);
 		
 	}
 	
-	@DeleteMapping("/person/{id}")
+	@DeleteMapping("/{id}")
 	public void deletePerson(@PathVariable("id") int id) {
 		personService.deletePerson(id);
 	}

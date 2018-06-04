@@ -21,66 +21,44 @@ public class Team {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int teamId;
+	private int id;
 	private String name;
 	private String purpose;
-	@OneToMany( mappedBy = "team", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "team", cascade = CascadeType.ALL)
 	private Set<Task> tasks = new HashSet<Task>();
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "person_team", 
-	joinColumns = { @JoinColumn(name = "TEAM_ID") }, 
-	inverseJoinColumns = { @JoinColumn(name = "PERSON_ID") })
-	private Set<Person> personList =new HashSet<Person>();
+	@JoinTable(name = "person_team", joinColumns = { @JoinColumn(name = "TEAM_ID") }, inverseJoinColumns = {
+			@JoinColumn(name = "PERSON_ID") })
+	private Set<Person> personList = new HashSet<Person>();
 
-	public int getTeamId() {
-		return teamId;
+	public int getId() {
+		return id;
 	}
 
-
-
-
-	public void setTeamId(int teamId) {
-		this.teamId = teamId;
+	public void setId(int id) {
+		this.id = id;
 	}
-
-
-
 
 	public Team(int teamId, String name, String purpose, Set<Task> tasks, Set<Person> personList) {
 		super();
-		this.teamId = teamId;
+		this.id = teamId;
 		this.name = name;
 		this.purpose = purpose;
 		this.tasks = tasks;
 		this.personList = personList;
 	}
 
-	
-	
-
 	public Team() {
 
 	}
-	
-	
-
-	
-
-
 
 	public Set<Person> getPersonList() {
 		return personList;
 	}
 
-
-
 	public void setPersonList(Set<Person> personList) {
 		this.personList = personList;
 	}
-
-
-
-	
 
 	public String getName() {
 		return name;

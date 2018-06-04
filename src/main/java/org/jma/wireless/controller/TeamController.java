@@ -52,11 +52,12 @@ public class TeamController {
 	}
 	
 	@PutMapping(value = "/team", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody TeamDTO updateTeam(@RequestBody Team team) {
+	public @ResponseBody TeamDTO updateTeam(@RequestBody TeamDTO teamDTO) {
 		
-		Team p=teamService.updateTeam(team);
 		
-		return TeamDTO.getTeamDTO(p);
+		return teamService.updateTeam(teamDTO);
+		
+		
 		
 	}
 	
