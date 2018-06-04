@@ -49,8 +49,6 @@ public class TaskServiceImpl implements TaskService {
 		return null;
 	}
 
-
-
 	@Override
 	public TaskDTO getTask(int id) {
 		Task t = dao.findById(id) == null ? null : dao.findById(id);
@@ -63,9 +61,9 @@ public class TaskServiceImpl implements TaskService {
 		int id = taskDTO.getId();
 		Task p1 = dao.findById(id) == null ? null : dao.findById(id);
 		if (p1 != null) {
-			if(taskDTO.getName()!=null)
-			p1.setName(taskDTO.getName());
-			if(taskDTO.getTeamId()!=p1.getId())
+			if (taskDTO.getName() != null)
+				p1.setName(taskDTO.getName());
+			if (taskDTO.getTeamId() != p1.getId())
 				p1.setName(taskDTO.getName());
 			dao.updateTask(p1);
 			return p1;

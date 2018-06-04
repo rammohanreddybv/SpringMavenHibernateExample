@@ -46,7 +46,7 @@ public class TaskController {
 	@PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody TaskDTO updateTask(@RequestBody TaskDTO taskDTO) {//ReuestBody need to change to TaskDTO 
 		
-		Task p=taskService.updateTask(taskDTO);
+		Task p = taskService.updateTask(taskDTO);
 		
 		return TaskDTO.getTaskDTO(p);
 		
