@@ -5,7 +5,9 @@ package org.jma.wireless.controller;
 
 import java.util.List;
 
+import org.jma.wireless.dto.TaskDTO;
 import org.jma.wireless.dto.TeamDTO;
+import org.jma.wireless.model.Task;
 import org.jma.wireless.model.Team;
 import org.jma.wireless.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,27 +34,29 @@ public class TeamController {
 	TeamService teamService;
 
 	@PostMapping(value = "/team", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody Team create(@RequestBody TeamDTO teamDTO) {
+	public @ResponseBody TeamDTO create(@RequestBody TeamDTO teamDTO) {
 
 		Team p = teamService.create(teamDTO);
 
-		return p;
+		return TeamDTO.getTeamDTO(p);
 	}
 
 	@GetMapping("/team")
-	public @ResponseBody List<Team> getAllTeams() {
+	public @ResponseBody List<TeamDTO> getAllTeams() {
 		return teamService.getAllTeams();
 	}
 	
 	@GetMapping("/team/{id}")
-	public @ResponseBody Team getTeam(@PathVariable("id") int id) {
+	public @ResponseBody TeamDTO getTeam(@PathVariable("id") int id) {
 		return teamService.getTeam(id);
 	}
 	
 	@PutMapping(value = "/team", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody Team updateTeam(@RequestBody Team team) {
+	public @ResponseBody TeamDTO updateTeam(@RequestBody Team team) {
 		
-		return teamService.updateTeam(team);
+		Team p=teamService.updateTeam(team);
+		
+		return TeamDTO.getTeamDTO(p);
 		
 	}
 	
@@ -60,4 +64,11 @@ public class TeamController {
 	public void deleteTeam(@PathVariable("id") int id) {
 		teamService.deleteTeam(id);
 	}
+	
+	@GetMapping("/team/{id}/tasks")
+	public List<TaskDTO> getTasksOfATeam(@PathVariable("id") int id){
+		return teamService.getTasksOfATeam(id);
+	}
+	
+	
 }

@@ -32,25 +32,28 @@ public class PersonController {
 	PersonService personService;
 
 	@PostMapping(value = "/person", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody Person create(@RequestBody PersonDTO personDTO) {
+	public @ResponseBody PersonDTO create(@RequestBody PersonDTO personDTO) {
 
 		Person p = personService.create(personDTO);
 
-		return p;
+		return personDTO.getPersonDTO(p);
 	}
 
 	@GetMapping("/person")
-	public @ResponseBody List<Person> getAllPersons() {
+	public @ResponseBody List<PersonDTO> getAllPersons() {
 		return personService.getAllPersons();
+		
+		
 	}
 	
 	@GetMapping("/person/{id}")
-	public @ResponseBody Person getPerson(@PathVariable("id") int id) {
+	public @ResponseBody PersonDTO getPerson(@PathVariable("id") int id) {
+		
 		return personService.getPerson(id);
 	}
 	
 	@PutMapping(value = "/person", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody Person updatePerson(@RequestBody Person person) {
+	public @ResponseBody PersonDTO updatePerson(@RequestBody Person person) {
 		
 		return personService.updatePerson(person);
 		

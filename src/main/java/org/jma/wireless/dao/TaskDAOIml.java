@@ -5,11 +5,10 @@ package org.jma.wireless.dao;
 
 import java.util.List;
 
-import javax.persistence.criteria.CriteriaBuilder;
-
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
-import org.jma.wireless.model.Person;
+import org.jma.wireless.dto.TaskDTO;
+import org.jma.wireless.model.Task;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,41 +18,40 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Repository
 @Transactional
-public class PersonDAOImpl extends AbstractDao<Integer, Person> implements PersonDAO {
+public class TaskDAOIml extends AbstractDao<Integer, Task> implements TaskDAO {
 
 	@Override
-	public void savePerson(Person person) {
+	public void saveTask(Task task) {
 
-		save(person);
+		save(task);
 
 	}
 
 	@Override
-	public List<Person> findAllPersons() {
+	public List<Task> findAllTasks() {
 		Criteria c = createEntityCriteria();
-		return (List<Person>) c.list();
+		return (List<Task>) c.list();
 	}
 
 	@Override
-	public Person findById(int id) {
+	public Task findById(int id) {
 		Criteria c = createEntityCriteria();
 		c.add(Restrictions.eq("id", id));
-		Person p1 = (Person) c.uniqueResult();
-		System.out.println("Inside dao");
+		Task p1 = (Task) c.uniqueResult();
 		return p1;
 	}
 	
 	@Override
-	public void updatePerson(Person person) {
-		update(person);
+	public void updateTask(Task task) {
+		update(task);
 		
 	}
 
 	@Override
-	public void deletePerson(int id) {
+	public void deleteTask(int id) {
 		Criteria c = createEntityCriteria();
 		c.add(Restrictions.eq("id", id));
-		Person p1 = (Person) c.uniqueResult();
+		Task p1 = (Task) c.uniqueResult();
 		if(p1!=null) {
 		
 			delete(p1);
@@ -61,4 +59,5 @@ public class PersonDAOImpl extends AbstractDao<Integer, Person> implements Perso
 
 	}
 
+	
 }

@@ -4,8 +4,6 @@
 package org.jma.wireless.controller;
 
 
-import org.jma.wireless.service.DBServiceProvider;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,8 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HomeController2 {
 	
-	@Autowired
-	DBServiceProvider dBServiceProvider;
+
 
 	@RequestMapping("/home2")
 	public String Home() {
@@ -31,17 +28,7 @@ public class HomeController2 {
 		return "sdru2";
 	}
 	
-	@RequestMapping("/populate")
-	public String populate() {
-		System.out.println("This is Populate method");
-		return dBServiceProvider.populate();		
-	}
 	
-	@RequestMapping("/test")
-	public String test() {
-		System.out.println("This is Test method");
-		return dBServiceProvider.test();		
-	}
 
 
 }

@@ -18,11 +18,11 @@ public interface PersonService {
 
 	Person create(PersonDTO personDTO);
 
-	List<Person> getAllPersons();
+	List<PersonDTO> getAllPersons();
 
-	Person getPerson(int id);
+	PersonDTO getPerson(int id);
 
-	Person updatePerson(Person person);
+	PersonDTO updatePerson(Person person);
 
 	void deletePerson(int id);
 
